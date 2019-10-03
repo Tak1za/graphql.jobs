@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace graphql.jobs.data.Models
+namespace graphql.jobs.common.Queries
 {
-    class Job
+    public class Job
     {
         public string Id { get; set; }
         public string Title { get; set; }

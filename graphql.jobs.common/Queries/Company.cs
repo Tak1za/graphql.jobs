@@ -2,11 +2,10 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace graphql.jobs.data.Models
+namespace graphql.jobs.common.Queries
 {
-    public class City
+    public class Company
     {
         public string Name { get; set; }
-        public Country Country { get; set; }
     }
 }

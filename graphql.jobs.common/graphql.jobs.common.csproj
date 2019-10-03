@@ -8,8 +8,5 @@
     <PackageReference Include="GraphQL.Client" Version="2.0.0-alpha.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\graphql.jobs.data\graphql.jobs.data.csproj" />
-  </ItemGroup>
 
 </Project>

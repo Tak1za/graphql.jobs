@@ -1,9 +1,11 @@
-﻿using System.Threading.Tasks;
+﻿using graphql.jobs.common.Queries;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace graphql.jobs.common.Interfaces
 {
     public interface IJobs
     {
-        public Task<Job> GetJobs(); 
+        public Task<AllJobs> GetJobs(); 
     }
 }
