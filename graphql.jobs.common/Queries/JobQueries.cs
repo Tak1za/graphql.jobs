@@ -16,7 +16,7 @@ namespace graphql.jobs.common.Queries
         {
             _client = client;
         }
-        public async Task<AllJobs> GetJobs()
+        public async Task<IEnumerable<Job>> GetJobs()
         {
             var query = new GraphQLRequest
             {
@@ -48,7 +48,7 @@ namespace graphql.jobs.common.Queries
             };
 
             var response = await _client.SendQueryAsync(query);
-            var data = response.GetDataFieldAs<AllJobs>("jobs");
+            var data = response.GetDataFieldAs<IEnumerable<Job>>("jobs");
             return data;
         }
     }
