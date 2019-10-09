@@ -8,7 +8,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace graphql.jobs.api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
     public class JobsController : ControllerBase
     {
@@ -20,10 +19,21 @@ namespace graphql.jobs.api.Controllers
         }
 
         [HttpGet]
+        [Produces("application/json")]
+        [Route("/api/jobs")]
         public async Task<ActionResult> GetAllJobs()
         {
             var response = await _jobs.GetJobs();
             return Ok(response);
-        } 
+        }
+
+        [HttpGet]
+        [Produces("application/json")]
+        [Route("/api/jobs/search")]
+        public async Task<ActionResult> GetJobsByCity([FromQuery]string city)
+        {
+            var response = await _jobs.GetJobsByCity(city);
+            return Ok(response);
+        }
     }
 }

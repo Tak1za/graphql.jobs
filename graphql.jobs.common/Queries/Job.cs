@@ -1,5 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 using System.Text;
 
 namespace graphql.jobs.common.Queries
@@ -13,7 +15,6 @@ namespace graphql.jobs.common.Queries
         public string Description { get; set; }
         public Company Company { get; set; }
         public string ApplyUrl { get; set; }
-        public string LocationNames { get; set; }
         public DateTime postedAt { get; set; }
         public DateTime updatedAt { get; set; }
     }

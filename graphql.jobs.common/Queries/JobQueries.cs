@@ -39,7 +39,6 @@ namespace graphql.jobs.common.Queries
                                 name
                             }
                             applyUrl
-                            locationNames
                             postedAt
                             updatedAt
                         }
@@ -50,6 +49,60 @@ namespace graphql.jobs.common.Queries
             var response = await _client.SendQueryAsync(query);
             var data = response.GetDataFieldAs<IEnumerable<Job>>("jobs");
             return data;
+        }
+
+        public async Task<City> GetJobsByCity(string citySlug)
+        {
+            var cityQuery = new
+            {
+                slug = citySlug
+            };
+            var query = new GraphQLRequest
+            {
+                Query = @"
+                    query getJobsByCity($cityQuery: LocationInput!){
+                        city(input: $cityQuery){
+                            id
+                            name
+                            country{
+                                name
+                            }
+                            jobs{
+                                id
+                                title
+                                commitment{
+                                    title
+                                }
+                                description
+                                company{
+                                    name
+                                }
+                                applyUrl
+                                postedAt
+                                updatedAt
+                            }
+                        }
+                    }
+                ",
+                Variables = new
+                {
+                    cityQuery = cityQuery
+                },
+            };
+
+            try
+            {
+                
+                
+                var response = await _client.SendQueryAsync(query);
+                var data = response.GetDataFieldAs<City>("city");
+                return data;
+            }
+            catch(Exception ex)
+            {
+                return null;
+            }
+            
         }
     }
 }
